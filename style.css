@@ -1,0 +1,476 @@
+/* --- Google Fonts --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Roboto+Slab:wght@400;700&display=swap');
+
+/* --- CSS Variables (Themes) --- */
+:root {
+    /* Light Theme (Default) */
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --background-color: #f8f9fa;
+    --text-color: #212529;
+    --heading-color: #343a40;
+    --card-bg: #ffffff;
+    --card-shadow: rgba(0, 0, 0, 0.1);
+    --border-color: #dee2e6;
+    --link-color: #0056b3;
+    --nav-bg: #e9ecef;
+    --footer-bg: #343a40;
+    --footer-text: #f8f9fa;
+
+    --font-primary: 'Poppins', sans-serif;
+    --font-secondary: 'Roboto Slab', serif;
+
+    --transition-speed: 0.3s;
+}
+
+.theme-dark {
+    --primary-color: #0dcaf0; /* Cyan */
+    --secondary-color: #adb5bd;
+    --background-color: #1a1a1a; /* Darker background */
+    --text-color: #e9ecef;
+    --heading-color: #f8f9fa;
+    --card-bg: #2c2c2c; /* Darker cards */
+    --card-shadow: rgba(0, 0, 0, 0.4);
+    --border-color: #444;
+    --link-color: #66d9ef; /* Lighter blue/cyan */
+    --nav-bg: #212529;
+    --footer-bg: #111;
+    --footer-text: #adb5bd;
+}
+
+.theme-blue {
+    --primary-color: #0d6efd; /* Standard Bootstrap Blue */
+    --secondary-color: #6f42c1; /* Purple */
+    --background-color: #e7f1ff; /* Light blue background */
+    --text-color: #2a3b4d;
+    --heading-color: #0a58ca;
+    --card-bg: #ffffff;
+    --card-shadow: rgba(13, 110, 253, 0.15);
+    --border-color: #b6d4fe;
+    --link-color: #0b5ed7;
+    --nav-bg: #cfe2ff;
+    --footer-bg: #0a58ca;
+    --footer-text: #ffffff;
+}
+
+/* --- Base Styles --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.7;
+    transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-secondary);
+    color: var(--heading-color);
+    margin-bottom: 0.75em;
+    line-height: 1.3;
+}
+
+h1 { font-size: 2.8rem; }
+h2 { font-size: 2.2rem; margin-top: 1.5em; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.3rem; }
+
+p {
+    margin-bottom: 1.2em;
+}
+
+a {
+    color: var(--link-color);
+    text-decoration: none;
+    transition: color var(--transition-speed);
+}
+
+a:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+ul {
+    list-style-position: inside;
+    margin-bottom: 1em;
+    padding-left: 1em;
+}
+li {
+    margin-bottom: 0.5em;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* --- Layout & Sections --- */
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://via.placeholder.com/1920x600/333333/FFFFFF?text=JOYATO+Background+Concept') no-repeat center center/cover; /* Placeholder bg */
+    color: #fff;
+    text-align: center;
+    padding: 6rem 1rem;
+    margin-bottom: 2rem;
+}
+.hero h1 {
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.main-nav {
+    background-color: var(--nav-bg);
+    padding: 0.5rem 0;
+    margin-bottom: 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: background-color var(--transition-speed);
+}
+.main-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+.main-nav a {
+    text-decoration: none;
+    color: var(--heading-color);
+    font-weight: 600;
+    padding: 0.5rem 0;
+    position: relative;
+}
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background-color: var(--primary-color);
+    transition: width var(--transition-speed) ease-out;
+}
+.main-nav a:hover::after,
+.main-nav a:focus::after {
+    width: 100%;
+}
+
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem 2rem 1rem; /* Added bottom padding */
+}
+
+.content-section {
+    background-color: var(--card-bg);
+    padding: 2rem;
+    margin-bottom: 2.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px var(--card-shadow);
+    border: 1px solid var(--border-color);
+    transition: background-color var(--transition-speed), border-color var(--transition-speed), box-shadow var(--transition-speed);
+}
+.content-section h2 {
+    border-bottom: 3px solid var(--primary-color);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+    display: inline-block;
+}
+
+/* --- Section Specific Styles --- */
+
+/* About Section */
+#about ul {
+    list-style-type: '✨ '; /* Fun bullet point */
+    padding-left: 0.5em;
+}
+#about strong {
+    color: var(--primary-color);
+}
+
+/* Games Section */
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+.game-card {
+    background-color: var(--background-color); /* Slightly different bg */
+    padding: 1rem;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+    display: flex;
+    flex-direction: column;
+}
+.game-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 8px 16px var(--card-shadow);
+}
+.game-thumbnail {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    background-color: #ccc; /* Placeholder background */
+    border: 1px solid var(--border-color);
+}
+.game-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+.game-details {
+    font-size: 0.85rem;
+    color: var(--secondary-color);
+    margin-bottom: 0.75rem;
+}
+.game-description {
+    font-size: 0.95rem;
+    flex-grow: 1; /* Pushes details down */
+    margin-bottom: 0;
+}
+
+/* Roadmap Section */
+.roadmap-container {
+    position: relative;
+    padding-left: 40px; /* Space for the timeline line */
+}
+.roadmap-container::before { /* The vertical timeline line */
+    content: '';
+    position: absolute;
+    left: 15px;
+    top: 10px;
+    bottom: 10px;
+    width: 4px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+}
+.roadmap-item {
+    position: relative;
+    margin-bottom: 2rem;
+    padding-left: 25px; /* Space between line and content */
+}
+.roadmap-item::before { /* The bullet point on the line */
+    content: '';
+    position: absolute;
+    left: -8px; /* Position relative to the item */
+    top: 5px;
+    width: 20px;
+    height: 20px;
+    background-color: var(--background-color); /* Match body bg to overlay line */
+    border: 4px solid var(--primary-color);
+    border-radius: 50%;
+    z-index: 1;
+}
+.roadmap-date {
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 0.3rem;
+    font-size: 1.1rem;
+}
+.roadmap-details h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+}
+
+/* Company Section */
+.company-subsection {
+    margin-bottom: 2rem;
+    border-left: 4px solid var(--secondary-color);
+    padding-left: 1rem;
+}
+.company-subsection h3 {
+    color: var(--secondary-color);
+    margin-bottom: 0.8rem;
+}
+.projects-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+.project-card {
+    background: var(--background-color);
+    padding: 1rem;
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+}
+.project-title {
+    font-size: 1.1rem;
+    color: var(--heading-color);
+    margin-bottom: 0.5rem;
+}
+.project-desc {
+    font-size: 0.9rem;
+    margin-bottom: 0;
+}
+#company-branches li {
+    list-style: none;
+    padding-left: 0;
+}
+#company-branches strong {
+    display: block;
+    color: var(--heading-color);
+}
+
+/* Spotlight Section */
+.spotlight-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+.spotlight-item {
+    text-align: center;
+}
+.spotlight-image {
+    border-radius: 8px;
+    box-shadow: 0 4px 8px var(--card-shadow);
+    margin-bottom: 1rem; /* Space between image and text */
+    width: 100%;
+    max-width: 400px; /* Match inline style */
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid var(--border-color);
+}
+.spotlight-description {
+    font-size: 1rem;
+    margin-top: 10px; /* Ensure space if margin-bottom removed from img */
+}
+
+
+/* --- Settings Button --- */
+.settings-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.8rem 1rem;
+    border-radius: 50%;
+    font-size: 1.5rem; /* Icon size */
+    cursor: pointer;
+    z-index: 1001; /* Above nav */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color var(--transition-speed), transform var(--transition-speed);
+    text-decoration: none; /* Remove underline from link */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.settings-button:hover {
+    background-color: var(--link-color);
+    transform: scale(1.1) rotate(45deg);
+    color: white; /* Keep color on hover */
+    text-decoration: none; /* Keep underline off */
+}
+.settings-button i {
+    transition: transform 0.5s ease;
+}
+.settings-button:hover i {
+     /* Optional: rotate icon within button */
+    /* transform: rotate(90deg); */
+}
+
+
+/* --- Footer --- */
+footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    text-align: center;
+    padding: 1.5rem 1rem;
+    margin-top: 3rem;
+    transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+/* --- Animations --- */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* --- Responsiveness --- */
+@media (max-width: 992px) {
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; }
+    .hero { padding: 4rem 1rem; }
+}
+
+@media (max-width: 768px) {
+    h1 { font-size: 2.2rem; }
+    h2 { font-size: 1.8rem; }
+    h3 { font-size: 1.4rem; }
+
+    .main-nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+     .main-nav a {
+        padding: 0.3rem 0;
+    }
+
+    .games-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+     .spotlight-grid {
+        grid-template-columns: 1fr; /* Stack vertically */
+    }
+    .roadmap-container {
+        padding-left: 25px; /* Reduce padding */
+    }
+    .roadmap-item {
+        padding-left: 15px;
+    }
+    .roadmap-container::before {
+        left: 5px; /* Adjust line position */
+    }
+    .roadmap-item::before {
+        left: -10px; /* Adjust bullet position */
+         width: 15px;
+         height: 15px;
+         border-width: 3px;
+    }
+    .settings-button {
+        top: 10px;
+        right: 10px;
+        padding: 0.6rem 0.8rem;
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    body { line-height: 1.6; }
+    h1 { font-size: 1.8rem; }
+    h2 { font-size: 1.6rem; }
+    .hero { padding: 3rem 1rem; }
+    .content-section { padding: 1.5rem; }
+     .games-grid {
+        grid-template-columns: 1fr; /* Single column */
+    }
+    .projects-list {
+        grid-template-columns: 1fr;
+    }
+}
